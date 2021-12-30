@@ -1,0 +1,7 @@
+*.pyc
+# *.sql
+.vscode/
+.idea/
+__pycache__/
+
+
