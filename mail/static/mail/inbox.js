@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
 
   // Use buttons to toggle between views
-  document.querySelector('#inbox').addEventListener('click', () => load_mailbox('inbox'));
-  document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
-  document.querySelector('#archived').addEventListener('click', () => load_mailbox('archive'));
+  document.querySelector('#inbox').addEventListener('click', () => load_mailbox('вхідні'));
+  document.querySelector('#sent').addEventListener('click', () => load_mailbox('надіслані'));
+  document.querySelector('#archived').addEventListener('click', () => load_mailbox('архів'));
   document.querySelector('#compose').addEventListener('click', compose_email);
 
   // By default, load the inbox
-  load_mailbox('inbox');
+  load_mailbox('вхідні');
 });
 
 function compose_email() {
