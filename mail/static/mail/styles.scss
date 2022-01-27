@@ -2,8 +2,16 @@ textarea {
     min-height: 400px;
 }
 
-.inbox_list {
-    border: 2px solid black;
+.inbox_list, .display_div {
     margin-bottom: 4px;
     padding: 5px;
+}
+
+.display_div {
+    .inbox_div {
+        width: 90%;
+        border: 2px solid black;
+        padding: 5px;
+    }
+    display: flex;
 }

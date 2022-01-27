@@ -36,8 +36,11 @@ function compose_email() {
     })
     .then(response => response.json())
     .then(result => {
-      console.log(result);
+        // Вивести результат в консоль
+        console.log(result);
     });
+    load_mailbox('надіслані')
+    return false;
   }
 }
 
@@ -59,12 +62,27 @@ function load_mailbox(mailbox) {
       console.log(emails)
       emails.forEach(element => {
         //document.querySelector('#emails-view').innerHTML.
+        const display_div = document.createElement('div');
+        display_div.className = 'display_div';
         const inbox_list = document.createElement('div');
-        inbox_list.className = 'inbox_list'
-        inbox_list.innerHTML = `<h4>${element.sender}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p>`
-        document.querySelector('#emails-view').append(inbox_list);
+        inbox_list.className = 'inbox_div';
+        inbox_list.innerHTML = `<h4>від: ${element.sender}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p>`
+        inbox_list.addEventListener('click', function() {
+          console.log(`Натиснуто на лист з ID ${element.id}`)
+        });
+        const archive_button = document.createElement('button');
+        archive_button.className = 'archive-button';
+        archive_button.innerHTML = 'В архів'
+        archive_button.onclick = function() {
+          console.log(`Спроба архівувати лист з ID ${element.id}`);
+        }
+        display_div.append(inbox_list, archive_button);
+        document.querySelector('#emails-view').append(display_div);
       });
     })
+    // document.querySelectorAll('button').addEventListener('click', function () {
+    //   console.log('Кнопку натиснуто')
+    // });
   }
 
   if (mailbox === 'надіслані'){
@@ -77,7 +95,28 @@ function load_mailbox(mailbox) {
         //document.querySelector('#emails-view').innerHTML.
         const inbox_list = document.createElement('div');
         inbox_list.className = 'inbox_list'
-        inbox_list.innerHTML = `<h4>${element.recipients}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p>`
+        inbox_list.innerHTML = `<h4>кому: ${element.recipients}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p>`
+        inbox_list.addEventListener('click', function() {
+          console.log(`Натиснуто на лист з ID ${element.id}`)
+        });
+        document.querySelector('#emails-view').append(inbox_list);
+      });
+    })
+  }
+  if (mailbox === 'архів'){
+    fetch('emails/archive')
+    .then(response => response.json())
+    .then(emails => {
+      console.log("Виводимо всі надіслані листи в консоль")
+      console.log(emails)
+      emails.forEach(element => {
+        //document.querySelector('#emails-view').innerHTML.
+        const inbox_list = document.createElement('div');
+        inbox_list.className = 'inbox_list'
+        inbox_list.innerHTML = `<h4>від: ${element.recipients}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p>`
+        inbox_list.addEventListener('click', function() {
+          console.log(`Натиснуто на лист з ID ${element.id}`)
+        });
         document.querySelector('#emails-view').append(inbox_list);
       });
     })
