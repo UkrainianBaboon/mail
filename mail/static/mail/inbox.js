@@ -67,6 +67,22 @@ function load_mailbox(mailbox) {
     })
   }
 
+  if (mailbox === 'надіслані'){
+    fetch('emails/sent')
+    .then(response => response.json())
+    .then(emails => {
+      console.log("Виводимо всі надіслані листи в консоль")
+      console.log(emails)
+      emails.forEach(element => {
+        //document.querySelector('#emails-view').innerHTML.
+        const inbox_list = document.createElement('div');
+        inbox_list.className = 'inbox_list'
+        inbox_list.innerHTML = `<h4>${element.recipients}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p>`
+        document.querySelector('#emails-view').append(inbox_list);
+      });
+    })
+  }
+
   
   // // document.querySelector('#emails-view').append(list);
 }
