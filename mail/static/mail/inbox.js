@@ -21,6 +21,7 @@ function compose_email() {
   document.querySelector('#compose-subject').value = '';
   document.querySelector('#compose-body').value = '';
 
+  // Логіка форми надсилання листів
   document.querySelector('form').onsubmit = () => {
     const to = document.querySelector('#compose-recipients').value;
     const subject = document.querySelector('#compose-subject').value;
@@ -48,4 +49,24 @@ function load_mailbox(mailbox) {
 
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
+
+  // Відображення списку вхідних листів
+  if (mailbox === 'вхідні'){
+    fetch('emails/inbox')
+    .then(response => response.json())
+    .then(emails => {
+      console.log("Виводимо всі вхідні листи в консоль")
+      console.log(emails)
+      emails.forEach(element => {
+        //document.querySelector('#emails-view').innerHTML.
+        const inbox_list = document.createElement('div');
+        inbox_list.className = 'inbox_list'
+        inbox_list.innerHTML = `<h4>${element.sender}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p>`
+        document.querySelector('#emails-view').append(inbox_list);
+      });
+    })
+  }
+
+  
+  // // document.querySelector('#emails-view').append(list);
 }
