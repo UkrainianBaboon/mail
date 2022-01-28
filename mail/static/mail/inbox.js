@@ -72,7 +72,7 @@ function load_mailbox(mailbox) {
         });
         const archive_button = document.createElement('button');
         archive_button.className = 'archive-button';
-        archive_button.innerHTML = 'В архів'
+        archive_button.innerHTML = 'Архівувати';
         archive_button.onclick = function() {
           console.log(`Спроба архівувати лист з ID ${element.id}`);
           fetch(`/emails/${element.id}`, {
@@ -83,6 +83,7 @@ function load_mailbox(mailbox) {
           })
           .then(()=>{
             console.log('Лист Архівовано');
+            display_div.remove();
           })
           load_mailbox('вхідні')
         }
@@ -117,7 +118,7 @@ function load_mailbox(mailbox) {
     fetch('emails/archive')
     .then(response => response.json())
     .then(emails => {
-      console.log("Виводимо всі надіслані листи в консоль")
+      console.log("Виводимо архів листів в консоль")
       console.log(emails)
       emails.forEach(element => {
         //document.querySelector('#emails-view').innerHTML.
@@ -144,6 +145,7 @@ function load_mailbox(mailbox) {
           })
           .then(() => {
             console.log('Лист розархівовано');
+            
           })
           .then(location.reload())
         }
