@@ -49,6 +49,7 @@ function load_mailbox(mailbox) {
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';
+  document.querySelector('#letter-view').style.display = 'none';
 
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
@@ -60,20 +61,38 @@ function load_mailbox(mailbox) {
     .then(emails => {
       console.log("Виводимо всі вхідні листи в консоль")
       console.log(emails)
+
+      //Відображення вхідних листів
+
       emails.forEach(element => {
-        //document.querySelector('#emails-view').innerHTML.
         const display_div = document.createElement('div');
         display_div.className = 'display_div';
         const inbox_list = document.createElement('div');
         inbox_list.className = 'inbox_div';
         inbox_list.innerHTML = `<h4>від: ${element.sender}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p>`
+        if (element.read === true){
+          inbox_list.style = 'background-color: lightgray';
+        }
+
+        // Перегляд листа 
+
         inbox_list.addEventListener('click', function() {
           console.log(`Натиснуто на лист з ID ${element.id}`)
+          document.querySelector('#emails-view').style.display = 'none';
+          document.querySelector('#compose-view').style.display = 'none';
+          document.querySelector('#letter-view').style.display = 'block';
+          
+          document.querySelector('#from').innerHTML=`Від: ${element.sender}`;
+          document.querySelector('#to').innerHTML=`Кому: ${element.recipients}`;
+          document.querySelector('#subject').innerHTML=`Тема: ${element.subject}`;
+          document.querySelector('#body').innerHTML=`${element.body}`;
+          
         });
         const archive_button = document.createElement('button');
         archive_button.className = 'archive-button';
         archive_button.innerHTML = 'Архівувати';
         archive_button.onclick = function() {
+          display_div.remove;
           console.log(`Спроба архівувати лист з ID ${element.id}`);
           fetch(`/emails/${element.id}`, {
             method: 'PUT',
@@ -83,17 +102,14 @@ function load_mailbox(mailbox) {
           })
           .then(()=>{
             console.log('Лист Архівовано');
-            display_div.remove();
+            load_mailbox('вхідні');
           })
-          load_mailbox('вхідні')
         }
         display_div.append(inbox_list, archive_button);
         document.querySelector('#emails-view').append(display_div);
       });
     })
-    // document.querySelectorAll('button').addEventListener('click', function () {
-    //   console.log('Кнопку натиснуто')
-    // });
+
   }
 
   if (mailbox === 'надіслані'){
@@ -105,8 +121,9 @@ function load_mailbox(mailbox) {
       emails.forEach(element => {
         //document.querySelector('#emails-view').innerHTML.
         const inbox_list = document.createElement('div');
-        inbox_list.className = 'inbox_list';
-        inbox_list.innerHTML = `<h4>кому: ${element.recipients}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p>`
+        // inbox_list.className = 'inbox_div';
+        inbox_list.className = 'display_div';
+        inbox_list.innerHTML = `<div class='inbox_div'><h4>кому: ${element.recipients}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p></div>`
         inbox_list.addEventListener('click', function() {
           console.log(`Натиснуто на лист з ID ${element.id}`);
         });
@@ -145,14 +162,13 @@ function load_mailbox(mailbox) {
           })
           .then(() => {
             console.log('Лист розархівовано');
+            load_mailbox('вхідні')
             
           })
-          .then(location.reload())
+          // .then(() => location.reload())   Воно працює
         }
       });
     })
   }
 
-  
-  // // document.querySelector('#emails-view').append(list);
 }

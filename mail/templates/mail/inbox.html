@@ -30,6 +30,18 @@
             <input type="submit" class="btn btn-primary"/>
         </form>
     </div>
+    {% comment %} Перегляд листа {% endcomment %}
+    <div id="letter-view">
+        <div id='letter-info-div'>
+            <span id='from'>Від:</span><br>
+            <span id='to'>Кому:</span><br>
+            <span id='subject'>Тема:</span>
+        </div>
+        <hr>
+        <div id='letter-body-div'>
+            <p id='body'></p>
+        </div>
+    </div>
 {% endblock %}
 
 {% block script %}

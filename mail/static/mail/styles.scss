@@ -8,10 +8,11 @@ textarea {
 }
 
 .display_div {
-    .inbox_div {
-        width: 90%;
-        border: 2px solid black;
-        padding: 5px;
-    }
     display: flex;
+}
+
+.inbox_div {
+    width: 90%;
+    border: 2px solid black;
+    padding: 5px;
 }
