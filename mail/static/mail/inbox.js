@@ -77,16 +77,7 @@ function load_mailbox(mailbox) {
         // Перегляд листа 
 
         inbox_list.addEventListener('click', function() {
-          console.log(`Натиснуто на лист з ID ${element.id}`)
-          document.querySelector('#emails-view').style.display = 'none';
-          document.querySelector('#compose-view').style.display = 'none';
-          document.querySelector('#letter-view').style.display = 'block';
-          
-          document.querySelector('#from').innerHTML=`Від: ${element.sender}`;
-          document.querySelector('#to').innerHTML=`Кому: ${element.recipients}`;
-          document.querySelector('#subject').innerHTML=`Тема: ${element.subject}`;
-          document.querySelector('#body').innerHTML=`${element.body}`;
-          
+          letter_view(element)
         });
         const archive_button = document.createElement('button');
         archive_button.className = 'archive-button';
@@ -125,7 +116,7 @@ function load_mailbox(mailbox) {
         inbox_list.className = 'display_div';
         inbox_list.innerHTML = `<div class='inbox_div'><h4>кому: ${element.recipients}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p></div>`
         inbox_list.addEventListener('click', function() {
-          console.log(`Натиснуто на лист з ID ${element.id}`);
+          letter_view(element)
         });
         document.querySelector('#emails-view').append(inbox_list);
       });
@@ -145,7 +136,7 @@ function load_mailbox(mailbox) {
         inbox_list.className = 'inbox_div';
         inbox_list.innerHTML = `<h4>від: ${element.sender}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p>`
         inbox_list.addEventListener('click', function() {
-          console.log(`Натиснуто на лист з ID ${element.id}`)
+          letter_view(element)
         });
         const archive_button = document.createElement('button');
         archive_button.className = 'archive-button';
@@ -170,5 +161,20 @@ function load_mailbox(mailbox) {
       });
     })
   }
+
+function letter_view(element) {
+  console.log(`Натиснуто на лист з ID ${element.id}`)
+  document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#compose-view').style.display = 'none';
+  document.querySelector('#letter-view').style.display = 'block';
+  
+  // Треба буде перенести це в  функцію.
+
+  document.querySelector('#from').innerHTML=`Від: ${element.sender}`;
+  document.querySelector('#to').innerHTML=`Кому: ${element.recipients}`;
+  document.querySelector('#subject').innerHTML=`Тема: ${element.subject}`;
+  document.querySelector('#body').innerHTML=`${element.body}`;
+  document.querySelector('#timestamp').innerHTML=`Час: ${element.timestamp}`;
+}
 
 }
