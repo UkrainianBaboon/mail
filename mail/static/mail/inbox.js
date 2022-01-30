@@ -164,6 +164,14 @@ function load_mailbox(mailbox) {
 
 function letter_view(element) {
   console.log(`Натиснуто на лист з ID ${element.id}`)
+  if (element.read === false) {
+    fetch(`/emails/${element.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+          read: true
+      })
+    });
+  }
   document.querySelector('#emails-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'none';
   document.querySelector('#letter-view').style.display = 'block';
@@ -175,6 +183,10 @@ function letter_view(element) {
   document.querySelector('#subject').innerHTML=`Тема: ${element.subject}`;
   document.querySelector('#body').innerHTML=`${element.body}`;
   document.querySelector('#timestamp').innerHTML=`Час: ${element.timestamp}`;
+}
+
+function reply () {
+  
 }
 
 }
