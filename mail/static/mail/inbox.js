@@ -14,6 +14,7 @@ function compose_email() {
 
   // Show compose view and hide other views
   document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#letter-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
 
   // Clear out composition fields
@@ -216,9 +217,8 @@ function reply (element) {
   document.querySelector('#compose-subject').value = re;
 
   //Заповнення тіла
-  document.querySelector('#compose-body').value = `${element.timestamp} ${element.sender} написав: \"${element.body}\"
-  
-  `
+  document.querySelector('#compose-body').value += `${element.timestamp} ${element.sender} написав: ${element.body}\n`
+  // document.querySelector('#compose-body').value += '<br>'
 }
 
 }
