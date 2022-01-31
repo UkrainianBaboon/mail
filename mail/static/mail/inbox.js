@@ -38,8 +38,8 @@ function compose_email() {
     .then(result => {
         // Вивести результат в консоль
         console.log(result);
+        load_mailbox('надіслані')
     });
-    load_mailbox('надіслані')
     return false;
   }
 }
@@ -141,6 +141,9 @@ function load_mailbox(mailbox) {
         inbox_list.addEventListener('click', function() {
           letter_view(element)
         });
+        if (element.read === true){
+          inbox_list.style = 'background-color: lightgray';
+        }
         const archive_button = document.createElement('button');
         archive_button.className = 'archive-button';
         archive_button.innerHTML = 'Розархівувати'
@@ -175,12 +178,12 @@ function letter_view(element) {
       })
     });
   }
+  // Прибираємо всі непотрібні елементи
   document.querySelector('#emails-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'none';
   document.querySelector('#letter-view').style.display = 'block';
   
-  // Треба буде перенести це в  функцію.
-
+  // Промальовуємо лист
   document.querySelector('#from').innerHTML=`Від: ${element.sender}`;
   document.querySelector('#to').innerHTML=`Кому: ${element.recipients}`;
   document.querySelector('#subject').innerHTML=`Тема: ${element.subject}`;
