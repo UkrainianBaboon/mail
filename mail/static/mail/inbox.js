@@ -114,7 +114,10 @@ function load_mailbox(mailbox) {
         const inbox_list = document.createElement('div');
         // inbox_list.className = 'inbox_div';
         inbox_list.className = 'display_div';
-        inbox_list.innerHTML = `<div class='inbox_div'><h4>кому: ${element.recipients}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p></div>`
+        inbox_list.innerHTML = `<div class='inbox_div'><h4>кому: ${element.recipients}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p></div>`;
+        if (element.read === true){
+          inbox_list.children[0].style = 'background-color: lightgray';
+        }
         inbox_list.addEventListener('click', function() {
           letter_view(element)
         });
@@ -183,10 +186,36 @@ function letter_view(element) {
   document.querySelector('#subject').innerHTML=`Тема: ${element.subject}`;
   document.querySelector('#body').innerHTML=`${element.body}`;
   document.querySelector('#timestamp').innerHTML=`Час: ${element.timestamp}`;
+  document.querySelector('#answer').onclick = function() {
+    console.log('Натиснуто кнопку "Відповісти"')
+    reply(element);
+  }
+  // document.createElement('button')
 }
 
-function reply () {
+function reply (element) {
+  compose_email();
+  //Заповнення відправника
+  document.querySelector('#compose-recipients').value = element.sender;
+
+  //Заповнення теми
+  let re = '';
+  let pasta = 'Re: ';
+  for (let i = 0; i < 4; i++){
+    re += element.subject.charAt(i);
+    console.log(re);
+  }
+  if (re !== pasta) {
+    re = pasta + element.subject;
+  }else {
+    re = element.subject;
+  }
+  document.querySelector('#compose-subject').value = re;
+
+  //Заповнення тіла
+  document.querySelector('#compose-body').value = `${element.timestamp} ${element.sender} написав: \"${element.body}\"
   
+  `
 }
 
 }
