@@ -217,7 +217,8 @@ function reply (element) {
   document.querySelector('#compose-subject').value = re;
 
   //Заповнення тіла
-  document.querySelector('#compose-body').value += `${element.timestamp} ${element.sender} написав: ${element.body}\n`
+  document.querySelector('#compose-body').value += `\n_______________________\n${element.timestamp} ${element.sender} написав: ${element.body}\n`
+  
   // document.querySelector('#compose-body').value += '<br>'
 }
 
