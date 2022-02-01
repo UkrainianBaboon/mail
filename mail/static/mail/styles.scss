@@ -2,6 +2,10 @@
     font-family: 'mashine';
     src: url(../fonts/a_OldTyperNr.ttf);
 }
+@font-face {
+    font-family: 'title_font';
+    src: url(../fonts/Ekaterina_Velikaya_One.ttf);
+}
 
 textarea {
     min-height: 400px;
@@ -26,5 +30,32 @@ textarea {
     width: 100%;
     border: none;
     outline: none;
+    // background-image: url(../images/letter_backgound.jpg);
 }
 
+body {
+    background-image: url(../images/wood2.jpg);
+}
+
+#main_title {
+    font-family: 'title_font';
+    text-align: center;
+    color: black;
+    margin-bottom: 100px;
+    font-size: 2.8rem;
+    font-weight: 500;
+}
+
+#main_title_div{
+    height: 170px;
+    background-color: #a76d3cbd;
+    
+}
+
+#your_email {
+    color: black;
+    font-family: 'mashine';
+    text-align: center;
+    margin-top: 20px;
+
+}

@@ -2,7 +2,10 @@
 {% load static %}
 
 {% block body %}
-    <h2>{{ request.user.email }}</h2>
+    <div id='main_title_div'>
+        <h1 id='main_title'>Королівська Пошта</h1>
+    </div>
+    <h2 id='your_email'>{{ request.user.email }}</h2>
 
     <button class="btn btn-sm btn-outline-primary" id="inbox">Вхідні</button>
     <button class="btn btn-sm btn-outline-primary" id="compose">Написати</button>
@@ -42,6 +45,7 @@
         </div>
         <hr>
         <div id='letter-body-div'>
+            <img src='letter_backgound.jpg' alt="">
             <textarea id='body' readonly></textarea>
         </div>
     </div>
