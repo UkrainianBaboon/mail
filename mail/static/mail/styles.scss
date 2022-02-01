@@ -18,6 +18,7 @@ textarea {
 
 .display_div {
     display: flex;
+    font-family: 'mashine';
 }
 
 .inbox_div {
@@ -47,7 +48,7 @@ body {
 }
 
 #main_title_div{
-    height: 170px;
+    height: 145px;
     background-color: #a76d3cbd;
     
 }
@@ -57,5 +58,11 @@ body {
     font-family: 'mashine';
     text-align: center;
     margin-top: 20px;
+    margin-bottom: 15px;
 
+}
+
+h3 {
+    color: black;
+    font-family: 'mashine';
 }

@@ -72,7 +72,9 @@ function load_mailbox(mailbox) {
         inbox_list.className = 'inbox_div';
         inbox_list.innerHTML = `<h4>від: ${element.sender}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p>`
         if (element.read === true){
-          inbox_list.style = 'background-color: lightgray';
+          inbox_list.style = 'background-color: #a1a1a1';
+        } else {
+          inbox_list.style = 'background-color: white';
         }
 
         // Перегляд листа 
@@ -117,7 +119,9 @@ function load_mailbox(mailbox) {
         inbox_list.className = 'display_div';
         inbox_list.innerHTML = `<div class='inbox_div'><h4>кому: ${element.recipients}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p></div>`;
         if (element.read === true){
-          inbox_list.children[0].style = 'background-color: lightgray';
+          inbox_list.children[0].style = 'background-color: #a1a1a1';
+        }else {
+          inbox_list.children[0].style = 'background-color: white';
         }
         inbox_list.addEventListener('click', function() {
           letter_view(element)
@@ -143,7 +147,9 @@ function load_mailbox(mailbox) {
           letter_view(element)
         });
         if (element.read === true){
-          inbox_list.style = 'background-color: lightgray';
+          inbox_list.style = 'background-color: #a1a1a1';
+        } else {
+          inbox_list.style = 'background-color: white';
         }
         const archive_button = document.createElement('button');
         archive_button.className = 'archive-button';
