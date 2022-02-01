@@ -8,6 +8,26 @@
   src: url(../fonts/Ekaterina_Velikaya_One.ttf);
 }
 
+@font-face {
+  font-family: 'first_female';
+  src: url(../fonts/female1.ttf);
+}
+
+@font-face {
+  font-family: 'second_female';
+  src: url(../fonts/female2.ttf);
+}
+
+@font-face {
+  font-family: 'first_male';
+  src: url(../fonts/male1.ttf);
+}
+
+@font-face {
+  font-family: 'second_male';
+  src: url(../fonts/male2.ttf);
+}
+
 textarea {
   min-height: 400px;
 }
@@ -65,5 +85,24 @@ body {
 h3 {
   color: black;
   font-family: 'mashine';
+}
+
+#compose-form {
+  background-image: url(../images/paper.jpg);
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 30px;
+}
+
+#compose-form div input {
+  font-family: 'first_male';
+  font-size: 1.2rem;
+  background-color: transparent;
+}
+
+#compose-body {
+  font-family: 'first_male';
+  font-size: 1.5rem;
+  background-color: transparent;
 }
 /*# sourceMappingURL=styles.css.map */
