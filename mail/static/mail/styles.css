@@ -148,4 +148,21 @@ h3 {
   margin-bottom: 60px;
   min-height: 600px;
 }
+
+.login-div {
+  font-family: 'mashine';
+  margin-top: 15%;
+}
+
+.login-div h2, .login-div span {
+  color: black;
+}
+
+.login-div span, .login-div a {
+  font-size: 1.2rem;
+}
+
+.login-div a {
+  color: #006ffd;
+}
 /*# sourceMappingURL=styles.css.map */
