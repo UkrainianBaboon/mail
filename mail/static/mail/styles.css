@@ -42,6 +42,7 @@ textarea {
   display: -ms-flexbox;
   display: flex;
   font-family: 'mashine';
+  cursor: pointer;
 }
 
 .inbox_div {
@@ -71,7 +72,7 @@ body {
 
 #main_title_div {
   height: 145px;
-  background-color: #a76d3cbd;
+  background-color: #bb8557d1;
 }
 
 #your_email {
@@ -98,11 +99,14 @@ h3 {
   font-family: 'first_male';
   font-size: 1.2rem;
   background-color: transparent;
+  color: #0101f1cf;
 }
 
 #compose-body {
   font-family: 'first_male';
   font-size: 1.5rem;
   background-color: transparent;
+  resize: none;
+  color: #0101f1cf;
 }
 /*# sourceMappingURL=styles.css.map */

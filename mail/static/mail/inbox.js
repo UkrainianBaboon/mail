@@ -8,6 +8,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // By default, load the inbox
   load_mailbox('вхідні');
+
+  // Розширювач для textarea.
+  const tx = document.querySelector("#compose-body");
+  tx.setAttribute("style", "height:" + (tx.scrollHeight) + "px;overflow-y:hidden;");
+  tx.addEventListener("input", OnInput, false);
+
+
+function OnInput() {
+  this.style.height = "auto";
+  this.style.height = (this.scrollHeight) + "px";
+}
+
 });
 
 function compose_email() {
