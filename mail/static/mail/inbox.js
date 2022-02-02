@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
   tx.addEventListener("input", OnInput, false);
 
 
+
+
+
 function OnInput() {
   this.style.height = "auto";
   this.style.height = (this.scrollHeight) + "px";
@@ -203,11 +206,19 @@ function letter_view(element) {
   document.querySelector('#letter-view').style.display = 'block';
   
   // Промальовуємо лист
-  document.querySelector('#from').innerHTML=`Від: ${element.sender}`;
-  document.querySelector('#to').innerHTML=`Кому: ${element.recipients}`;
-  document.querySelector('#subject').innerHTML=`Тема: ${element.subject}`;
+  document.querySelector('#from').innerHTML=`${element.sender}`;
+  document.querySelector('#to').innerHTML=`${element.recipients}`;
+  if (element.subject.length > 100) {
+    document.querySelector('#subject').innerHTML=`${element.subject.substring(0,97)}...`;
+  }
+  else{
+    document.querySelector('#subject').innerHTML=`${element.subject}`;
+  }
   document.querySelector('#body').innerHTML=`${element.body}`;
-  document.querySelector('#timestamp').innerHTML=`Час: ${element.timestamp}`;
+  rx = document.querySelector('#body')
+  rx.setAttribute("style", "height:" + (rx.scrollHeight) + "px;overflow-y:hidden;");
+
+  document.querySelector('#timestamp').innerHTML=`${element.timestamp}`;
   document.querySelector('#answer').onclick = function() {
     console.log('Натиснуто кнопку "Відповісти"')
     reply(element);

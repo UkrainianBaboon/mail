@@ -21,13 +21,13 @@
         <h3>Написання листа</h3>
         <form id="compose-form">
             <div class="form-group">
-                Від: <input disabled class="form-control" value="{{ request.user.email }}">
+                <span>Від:</span> <input disabled class="form-control" value="{{ request.user.email }}">
             </div>
             <div class="form-group">
-                Кому: <input id="compose-recipients" class="form-control">
+                <span>Кому:</span> <input id="compose-recipients" class="form-control" autocomplete="off">
             </div>
             <div class="form-group">
-                Тема: <input class="form-control" id="compose-subject">
+                <span>Тема:</span> <input class="form-control" id="compose-subject" autocomplete="off">
             </div>
             <textarea class="form-control" id="compose-body" placeholder="Тіло листа"></textarea>
             {% comment %} Типу textarea <div contenteditable='true'></div> {% endcomment %}
@@ -37,16 +37,18 @@
     {% comment %} Перегляд листа {% endcomment %}
     <div id="letter-view">
         <div id='letter-info-div'>
-            <span id='from-text-before'>Від:</span>
+            <span id='from-text-before' class='text-before'>Від:</span>
             <span id='from'></span><br>
+            <span id='to-text-before' class='text-before'>Кому:</span>
             <span id='to'></span><br>
+            <span id='subject-text-before' class='text-before'>Тема:</span>
             <span id='subject'></span><br>
+            <span id='timestamp-text-before' class='text-before'>Час:</span>
             <span id='timestamp'></span><br>
             <button class="btn btn-sm btn-outline-primary" id='answer'>Відповісти</button><br>
         </div>
         <hr>
         <div id='letter-body-div'>
-            <img src='letter_backgound.jpg' alt="">
             <textarea id='body' readonly></textarea>
         </div>
     </div>

@@ -97,6 +97,9 @@ h3 {
             background-color: transparent;
             color: #0101f1cf;
         }
+        span {
+            font-family: 'mashine';
+        }
         
     }
 }
@@ -111,4 +114,35 @@ h3 {
     background-color: transparent;
     resize: none;
     color: #0101f1cf;
+}
+
+#letter-info-div {
+    background-image: url(../images/letter_backgound.jpg);
+    background-size: cover;
+    width: 380px;
+    height: 267px;
+    padding-top: 75px;
+    padding-left: 20px;
+    .text-before {
+        font-family: 'mashine';
+        color: #000000d6;
+    }
+    span {
+        font-family: 'first_male';
+        color: #0101f1cf;
+    }
+}
+
+#body {
+    background-image: url(../images/paper.jpg);
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-family: 'first_male';
+    font-size: 1.5rem;
+    resize: none;
+    color: #0101f1cf;
+    margin-bottom: 60px;
+    min-height: 600px;
 }
