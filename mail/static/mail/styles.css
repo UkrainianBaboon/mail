@@ -152,6 +152,8 @@ h3 {
 .login-div {
   font-family: 'mashine';
   margin-top: 15%;
+  background-color: #bdbd91d1;
+  padding: 20px;
 }
 
 .login-div h2, .login-div span {
