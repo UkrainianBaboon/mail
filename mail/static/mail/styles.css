@@ -28,6 +28,33 @@
   src: url(../fonts/male2.ttf);
 }
 
+@media (max-width: 530px) {
+  #main_title {
+    font-size: 1.7rem;
+  }
+  #main_title_div {
+    height: 98px;
+  }
+}
+
+@media (min-width: 531px) and (max-width: 767px) {
+  #main_title {
+    font-size: 2.5rem;
+  }
+  #main_title_div {
+    height: 130px;
+  }
+}
+
+@media (min-width: 768px) {
+  #main_title {
+    font-size: 2.8rem;
+  }
+  #main_title_div {
+    height: 145px;
+  }
+}
+
 textarea {
   min-height: 400px;
 }
@@ -66,12 +93,10 @@ body {
   text-align: center;
   color: black;
   margin-bottom: 100px;
-  font-size: 2.8rem;
   font-weight: 500;
 }
 
 #main_title_div {
-  height: 145px;
   background-color: #bb8557d1;
 }
 
