@@ -203,13 +203,13 @@ function letter_view(element) {
   // Прибираємо всі непотрібні елементи
   document.querySelector('#emails-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'none';
-  document.querySelector('#letter-view').style.display = 'block';
+  document.querySelector('#letter-view').style.display = 'flex';
   
   // Промальовуємо лист
   document.querySelector('#from').innerHTML=`${element.sender}`;
   document.querySelector('#to').innerHTML=`${element.recipients}`;
-  if (element.subject.length > 100) {
-    document.querySelector('#subject').innerHTML=`${element.subject.substring(0,97)}...`;
+  if (element.subject.length > 50) {
+    document.querySelector('#subject').innerHTML=`${element.subject.substring(0,47)}...`;
   }
   else{
     document.querySelector('#subject').innerHTML=`${element.subject}`;

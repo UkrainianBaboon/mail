@@ -23,6 +23,20 @@
     src: url(../fonts/male2.ttf);
 }
 
+@media (max-width: 400px) {
+    #letter-info-div {
+        width: 328px;
+        height: 229px;
+        padding-top: 60px;
+    }
+}
+@media (min-width: 401px) {
+    #letter-info-div {
+        width: 380px;
+        height: 267px;
+        padding-top: 75px;
+    }
+}
 
 @media (max-width: 530px){
     #main_title {
@@ -67,6 +81,20 @@
     }
 }
 
+@media (max-width: 991px) {
+    .top-buttons-div{
+        display: flex;
+        justify-content: center;
+        button {
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+        :last-child {
+            margin-left: 2px;
+        }
+    }
+}
+
 textarea {
     min-height: 400px;
 }
@@ -78,6 +106,8 @@ textarea {
 
 .display_div {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     font-family: 'mashine';
     h4 {
         overflow: hidden;
@@ -90,7 +120,8 @@ textarea {
 }
 
 .inbox_div {
-    width: 90%;
+    // width: 90%;
+    width: 100%;
     border: 2px solid black;
     padding: 5px;
 }
@@ -168,9 +199,9 @@ h3 {
 #letter-info-div {
     background-image: url(../images/letter_backgound.jpg);
     background-size: cover;
-    width: 380px;
-    height: 267px;
-    padding-top: 75px;
+    // width: 380px;
+    // height: 267px;
+    // padding-top: 75px;
     padding-left: 20px;
     .text-before {
         font-family: 'mashine';
@@ -215,4 +246,9 @@ h3 {
 
 h4 {
     font-weight: bold;
+}
+
+#letter-view {
+    flex-direction: column;
+    align-items: center;
 }
