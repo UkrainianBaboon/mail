@@ -98,7 +98,7 @@ function load_mailbox(mailbox) {
           letter_view(element)
         });
         const archive_button = document.createElement('button');
-        archive_button.className = 'archive-button';
+        archive_button.className = 'btn btn-light btn-sm';
         archive_button.innerHTML = 'Архівувати';
         archive_button.onclick = function() {
           display_div.remove;
@@ -167,7 +167,7 @@ function load_mailbox(mailbox) {
           inbox_list.style = 'background-color: white';
         }
         const archive_button = document.createElement('button');
-        archive_button.className = 'archive-button';
+        archive_button.className = 'btn btn-light btn-sm';
         archive_button.innerHTML = 'Розархівувати'
         display_div.append(inbox_list, archive_button);
         document.querySelector('#emails-view').append(display_div);
