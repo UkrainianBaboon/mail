@@ -35,6 +35,21 @@
   #main_title_div {
     height: 98px;
   }
+  .top-buttons-div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .top-buttons-div button {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+  .top-buttons-div :last-child {
+    margin-left: 2px;
+  }
 }
 
 @media (min-width: 531px) and (max-width: 767px) {
@@ -191,5 +206,9 @@ h3 {
 
 .login-div a {
   color: #006ffd;
+}
+
+h4 {
+  font-weight: bold;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -7,11 +7,13 @@
     </div>
     <h2 id='your_email'>{{ request.user.email }}</h2>
 
-    <button class="btn btn-primary btn-sm" id="inbox">Вхідні</button>
-    <button class="btn btn-primary btn-sm" id="compose">Написати</button>
-    <button class="btn btn-primary btn-sm" id="sent">Надіслані</button>
-    <button class="btn btn-primary btn-sm" id="archived">Архів</button>
-    <a class="btn btn-primary btn-sm" href="{% url 'logout' %}">Вийти</a>
+    <div class='top-buttons-div'>
+        <button class="btn btn-primary btn-sm" id="inbox">Вхідні</button>
+        <button class="btn btn-primary btn-sm" id="compose">Написати</button>
+        <button class="btn btn-primary btn-sm" id="sent">Надіслані</button>
+        <button class="btn btn-primary btn-sm" id="archived">Архів</button>
+        <a class="btn btn-primary btn-sm" href="{% url 'logout' %}">Вийти</a>
+    </div>
     <hr>
 
     <div id="emails-view">

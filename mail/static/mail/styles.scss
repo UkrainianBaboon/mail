@@ -31,6 +31,17 @@
     #main_title_div{
         height: 98px;
     }
+    .top-buttons-div{
+        display: flex;
+        justify-content: center;
+        button {
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+        :last-child {
+            margin-left: 2px;
+        }
+    }
 }
 
 @media (min-width: 531px) and (max-width: 767px){
@@ -188,4 +199,8 @@ h3 {
     a {
         color: #006ffd;
     }
+}
+
+h4 {
+    font-weight: bold;
 }
