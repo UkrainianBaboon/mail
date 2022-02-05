@@ -60,6 +60,11 @@
     #main_title_div{
         height: 145px;
     }
+    .inbox_div{
+        p {
+            float: right;
+        }
+    }
 }
 
 textarea {
@@ -74,7 +79,14 @@ textarea {
 .display_div {
     display: flex;
     font-family: 'mashine';
+    h4 {
+        overflow: hidden;
+        margin-left: 5px;
+    }
     cursor: pointer;
+    p {
+        font-weight: bold;
+    }
 }
 
 .inbox_div {

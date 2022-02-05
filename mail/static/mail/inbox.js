@@ -85,7 +85,7 @@ function load_mailbox(mailbox) {
         display_div.className = 'display_div';
         const inbox_list = document.createElement('div');
         inbox_list.className = 'inbox_div';
-        inbox_list.innerHTML = `<h4>від: ${element.sender}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p>`
+        inbox_list.innerHTML = `<h4>від: ${element.sender}</h4>    ${element.subject}    <p>${element.timestamp}</p>`
         if (element.read === true){
           inbox_list.style = 'background-color: #a1a1a1';
         } else {
@@ -132,7 +132,7 @@ function load_mailbox(mailbox) {
         const inbox_list = document.createElement('div');
         // inbox_list.className = 'inbox_div';
         inbox_list.className = 'display_div';
-        inbox_list.innerHTML = `<div class='inbox_div'><h4>кому: ${element.recipients}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p></div>`;
+        inbox_list.innerHTML = `<div class='inbox_div'><h4>кому: ${element.recipients}</h4>    ${element.subject}    <p>${element.timestamp}</p></div>`;
         if (element.read === true){
           inbox_list.children[0].style = 'background-color: #a1a1a1';
         }else {
@@ -157,7 +157,7 @@ function load_mailbox(mailbox) {
         display_div.className = 'display_div';
         const inbox_list = document.createElement('div');
         inbox_list.className = 'inbox_div';
-        inbox_list.innerHTML = `<h4>від: ${element.sender}</h4>    ${element.subject}    <p style="float:right;">${element.timestamp}</p>`
+        inbox_list.innerHTML = `<h4>від: ${element.sender}</h4>    ${element.subject}    <p>${element.timestamp}</p>`
         inbox_list.addEventListener('click', function() {
           letter_view(element)
         });
