@@ -132,7 +132,7 @@ function load_mailbox(mailbox) {
         const inbox_list = document.createElement('div');
         // inbox_list.className = 'inbox_div';
         inbox_list.className = 'display_div';
-        inbox_list.innerHTML = `<div class='inbox_div'><h4>кому: ${element.recipients}</h4>    ${element.subject}    <p>${element.timestamp}</p></div>`;
+        inbox_list.innerHTML = `<div class='inbox_div'><h4>кому: ${String(element.recipients).replaceAll(',', ', ')}</h4>    ${element.subject}    <p>${element.timestamp}</p></div>`;
         if (element.read === true){
           inbox_list.children[0].style = 'background-color: #a1a1a1';
         }else {
@@ -207,7 +207,12 @@ function letter_view(element) {
   
   // Промальовуємо лист
   document.querySelector('#from').innerHTML=`${element.sender}`;
-  document.querySelector('#to').innerHTML=`${element.recipients}`;
+  if (String(element.recipients) > 85) {
+    document.querySelector('#to').innerHTML=`${String(element.recipients).replaceAll(',', ', ').substring(0, 85)}...`;
+  } else {
+    document.querySelector('#to').innerHTML=`${String(element.recipients).replaceAll(',', ', ')}`;
+  }
+  document.querySelector('#to').innerHTML=`${String(element.recipients).replaceAll(',', ', ')}`;
   if (element.subject.length > 50) {
     document.querySelector('#subject').innerHTML=`${element.subject.substring(0,47)}...`;
   }
@@ -245,10 +250,13 @@ function reply (element) {
   }
   document.querySelector('#compose-subject').value = re;
 
+  document.querySelector('#compose-body').focus()
+  
   //Заповнення тіла
   document.querySelector('#compose-body').value += `\n_______________________\n${element.timestamp} ${element.sender} написав: ${element.body}\n`
   
   // document.querySelector('#compose-body').value += '<br>'
+
 }
 
 }
