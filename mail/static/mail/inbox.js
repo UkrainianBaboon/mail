@@ -250,8 +250,7 @@ function reply (element) {
   }
   document.querySelector('#compose-subject').value = re;
 
-  document.querySelector('#compose-body').focus()
-  
+
   //Заповнення тіла
   document.querySelector('#compose-body').value += `\n_______________________\n${element.timestamp} ${element.sender} написав: ${element.body}\n`
   
