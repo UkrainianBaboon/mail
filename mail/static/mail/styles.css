@@ -34,6 +34,15 @@
     height: 229px;
     padding-top: 60px;
   }
+  #letter-view {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 
 @media (min-width: 401px) {
@@ -66,6 +75,15 @@
   .top-buttons-div :last-child {
     margin-left: 2px;
   }
+  #letter-view {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 
 @media (min-width: 531px) and (max-width: 767px) {
@@ -74,6 +92,15 @@
   }
   #main_title_div {
     height: 130px;
+  }
+  #letter-view {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
   }
 }
 
@@ -86,6 +113,15 @@
   }
   .inbox_div p {
     float: right;
+  }
+  #letter-view {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
   }
 }
 
@@ -128,7 +164,6 @@ textarea {
       -ms-flex-align: start;
           align-items: flex-start;
   font-family: 'mashine';
-  cursor: pointer;
 }
 
 .display_div h4 {
@@ -136,7 +171,11 @@ textarea {
   margin-left: 5px;
 }
 
-.display_div p {
+.display_div div {
+  cursor: pointer;
+}
+
+.display_div div p {
   font-weight: bold;
 }
 
@@ -165,12 +204,21 @@ body {
   font-family: 'title_font';
   text-align: center;
   color: black;
-  margin-bottom: 100px;
+  margin-top: 25px;
   font-weight: 500;
 }
 
 #main_title_div {
   background-color: #bb8557d1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #your_email {
@@ -265,15 +313,5 @@ h3 {
 
 h4 {
   font-weight: bold;
-}
-
-#letter-view {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 /*# sourceMappingURL=styles.css.map */

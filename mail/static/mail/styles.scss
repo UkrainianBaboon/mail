@@ -29,6 +29,10 @@
         height: 229px;
         padding-top: 60px;
     }
+    #letter-view {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 @media (min-width: 401px) {
     #letter-info-div {
@@ -56,6 +60,10 @@
             margin-left: 2px;
         }
     }
+    #letter-view {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 @media (min-width: 531px) and (max-width: 767px){
@@ -64,6 +72,10 @@
     }
     #main_title_div{
         height: 130px;
+    }
+    #letter-view {
+        flex-direction: column;
+        align-items: stretch;
     }
 }
 
@@ -78,6 +90,10 @@
         p {
             float: right;
         }
+    }
+    #letter-view {
+        flex-direction: column;
+        align-items: stretch;
     }
 }
 
@@ -113,9 +129,11 @@ textarea {
         overflow: hidden;
         margin-left: 5px;
     }
-    cursor: pointer;
-    p {
-        font-weight: bold;
+    div {
+        cursor: pointer;
+        p {
+            font-weight: bold;
+        }
     }
 
     button {
@@ -146,13 +164,17 @@ body {
     font-family: 'title_font';
     text-align: center;
     color: black;
-    margin-bottom: 100px;
+    // margin-bottom: 100px;
     // font-size: 2.8rem;
+    margin-top: 25px;
     font-weight: 500;
 }
 
 #main_title_div{
     background-color: #bb8557d1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #your_email {
@@ -253,7 +275,7 @@ h4 {
     font-weight: bold;
 }
 
-#letter-view {
-    flex-direction: column;
-    align-items: center;
-}
+// #letter-view {
+//     flex-direction: column;
+//     align-items: center;
+// }
