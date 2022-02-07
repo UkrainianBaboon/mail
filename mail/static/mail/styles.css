@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: 'title_font';
-  src: url(../fonts/Ekaterina_Velikaya_One.ttf);
+  src: url(../fonts/VivaldiD_CL.ttf);
 }
 
 @font-face {
@@ -55,7 +55,7 @@
 
 @media (max-width: 530px) {
   #main_title {
-    font-size: 1.7rem;
+    font-size: 2.5rem;
   }
   #main_title_div {
     height: 98px;
@@ -88,7 +88,7 @@
 
 @media (min-width: 531px) and (max-width: 767px) {
   #main_title {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
   }
   #main_title_div {
     height: 130px;
@@ -106,7 +106,7 @@
 
 @media (min-width: 768px) {
   #main_title {
-    font-size: 2.8rem;
+    font-size: 4rem;
   }
   #main_title_div {
     height: 145px;
@@ -204,7 +204,6 @@ body {
   font-family: 'title_font';
   text-align: center;
   color: black;
-  margin-top: 25px;
   font-weight: 500;
 }
 
