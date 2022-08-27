@@ -157,7 +157,8 @@ textarea {
 }
 
 body {
-    background-image: url(../images/wood2.jpg);
+    background-image: url(../images/wood.png);
+    background-color: rgb(108 62 22 / 84%);
 }
 
 #main_title {
@@ -171,7 +172,7 @@ body {
 }
 
 #main_title_div{
-    background-color: #bb8557d1;
+    background-color: rgb(255 199 158);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -192,7 +193,7 @@ h3 {
 }
 
 #compose-form {
-    background-image: url(../images/paper.jpg);
+    background-image: url(../images/paper.png);
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 40px;
@@ -241,7 +242,7 @@ h3 {
 }
 
 #body {
-    background-image: url(../images/paper.jpg);
+    background-image: url(../images/paper.png);
     background-color: transparent;
     padding-left: 55px;
     padding-right: 40px;

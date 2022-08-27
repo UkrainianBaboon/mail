@@ -21,7 +21,7 @@
 
     <div id="compose-view">
         <h3>Написання листа</h3>
-        <form id="compose-form">
+        <div id="compose-form">
             <div class="form-group">
                 <span>Від:</span> <input disabled class="form-control" value="{{ request.user.email }}">
             </div>
@@ -33,8 +33,8 @@
             </div>
             <textarea class="form-control" id="compose-body" placeholder="Тіло листа"></textarea>
             {% comment %} Типу textarea <div contenteditable='true'></div> {% endcomment %}
-            <input type="submit" class="btn btn-primary"/>
-        </form>
+            <input type="submit" id='submit_button' class="btn btn-primary"/>
+        </div>
     </div>
     {% comment %} Перегляд листа {% endcomment %}
     <div id="letter-view">
