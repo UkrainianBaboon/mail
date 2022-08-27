@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
     .querySelector("#archived")
     .addEventListener("click", () => load_mailbox("архів"));
   document.querySelector("#compose").addEventListener("click", compose_email);
-  document.querySelector("#submit_button").addEventListener("click", send_letter);
+  document
+    .querySelector("#submit_button")
+    .addEventListener("click", send_letter);
 
   // By default, load the inbox
   load_mailbox("вхідні");
@@ -42,39 +44,48 @@ function compose_email() {
 
   // Логіка форми надсилання листів
   // document.querySelector("#submit_button").addEventListener("click", send_letter);
-
 }
 
 async function send_letter(event) {
-  document.querySelector("#submit_button").removeEventListener("click", send_letter);
+  document
+    .querySelector("#submit_button")
+    .removeEventListener("click", send_letter);
   event.preventDefault();
   const to = document.querySelector("#compose-recipients").value;
   const subject = document.querySelector("#compose-subject").value;
   const body = document.querySelector("#compose-body").value;
-  if (to === '') {
+  if (to === "") {
     alert('У полі "Кому" має бути принаймні одна адреса');
-    document.querySelector("#submit_button").addEventListener("click", send_letter);
+    document
+      .querySelector("#submit_button")
+      .addEventListener("click", send_letter);
     return false;
   }
-  await(fetch("/emails", {
-    method: "POST",
-    body: JSON.stringify({
-      recipients: to,
-      subject: subject,
-      body: body
+  try {
+    await fetch("/emails", {
+      method: "POST",
+      body: JSON.stringify({
+        recipients: to,
+        subject: subject,
+        body: body,
+      }),
     })
-  }))
-  .then((response) => response.json())
-  .then(result => {
-    if (result.error){
-      compose_email();
-      document.querySelector("#submit_button").addEventListener("click", send_letter);
-    }else {
-      load_mailbox("надіслані");
-      document.querySelector("#submit_button").addEventListener("click", send_letter);
-    }
-  })
-};
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result[0]);
+        load_mailbox("надіслані");
+        document
+          .querySelector("#submit_button")
+          .addEventListener("click", send_letter);
+      });
+  } catch (error) {
+    console.log("помилка");
+    compose_email();
+    document
+      .querySelector("#submit_button")
+      .addEventListener("click", send_letter);
+  }
+}
 
 function load_mailbox(mailbox) {
   // Show the mailbox and hide other views
