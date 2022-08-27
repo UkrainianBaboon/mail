@@ -64,8 +64,16 @@ async function send_letter(event) {
       body: body
     })
   }))
-  document.querySelector("#submit_button").addEventListener("click", send_letter);
-  load_mailbox("надіслані")
+  .then((response) => response.json())
+  .then(result => {
+    if (result.error){
+      compose_email();
+      document.querySelector("#submit_button").addEventListener("click", send_letter);
+    }else {
+      load_mailbox("надіслані");
+      document.querySelector("#submit_button").addEventListener("click", send_letter);
+    }
+  })
 };
 
 function load_mailbox(mailbox) {
