@@ -46,12 +46,14 @@ function compose_email() {
 }
 
 async function send_letter(event) {
+  document.querySelector("#submit_button").removeEventListener("click", send_letter);
   event.preventDefault();
   const to = document.querySelector("#compose-recipients").value;
   const subject = document.querySelector("#compose-subject").value;
   const body = document.querySelector("#compose-body").value;
   if (to === '') {
     alert('У полі "Кому" має бути принаймні одна адреса');
+    document.querySelector("#submit_button").addEventListener("click", send_letter);
     return false;
   }
   await(fetch("/emails", {
@@ -62,6 +64,7 @@ async function send_letter(event) {
       body: body
     })
   }))
+  document.querySelector("#submit_button").addEventListener("click", send_letter);
   load_mailbox("надіслані")
 };
 
