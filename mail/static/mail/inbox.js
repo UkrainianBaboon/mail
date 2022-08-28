@@ -50,15 +50,43 @@ async function send_letter(event) {
   document
     .querySelector("#submit_button")
     .removeEventListener("click", send_letter);
+
   event.preventDefault();
+
   const to = document.querySelector("#compose-recipients").value;
   const subject = document.querySelector("#compose-subject").value;
   const body = document.querySelector("#compose-body").value;
+
+  // const alertTrigger = document.getElementById("submit_button");
+  // if (alertTrigger) {
+  //   alertTrigger.addEventListener("click", () => {
+  //     BootAlert("Лист надіслано успішно!", "success");
+  //   });
+  // }
+
+  const alertPlaceholder = document.getElementById("alert-placeholder");
+
+  const BootAlert = (message, type) => {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = [
+      `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+      `   <div>${message}</div>`,
+      "</div>",
+    ].join("");
+    // alertPlaceholder.innerHTML = wrapper.innerHTML;
+    alertPlaceholder.innerHTML = wrapper.innerHTML;
+    setTimeout(() => {
+      alertPlaceholder.innerHTML = "";
+    }, "3000");
+    setTimeout(() => {
+      document
+        .querySelector("#submit_button")
+        .addEventListener("click", send_letter);
+    }, "3000");
+  };
+
   if (to === "") {
-    alert('У полі "Кому" має бути принаймні одна адреса');
-    document
-      .querySelector("#submit_button")
-      .addEventListener("click", send_letter);
+    BootAlert('У полі "Кому" має бути принаймні одна адреса.', "warning");
     return false;
   }
   try {
@@ -72,18 +100,25 @@ async function send_letter(event) {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result[0]);
-        load_mailbox("надіслані");
-        document
-          .querySelector("#submit_button")
-          .addEventListener("click", send_letter);
+        console.log(`код відповіді:`);
+        console.log(result);
+        if (result.error) {
+          BootAlert(result.error, "danger");
+          return false;
+        } else {
+          BootAlert("Лист надіслано успішно.", "success");
+          load_mailbox("надіслані");
+        }
+      })
+      .catch((error) => {
+        BootAlert("Помилка мережі: Не вдалося надіслати листа", 'danger')
       });
   } catch (error) {
     console.log("помилка");
-    compose_email();
-    document
-      .querySelector("#submit_button")
-      .addEventListener("click", send_letter);
+    BootAlert(error, 'danger')
+    // document
+    //   .querySelector("#submit_button")
+    //   .addEventListener("click", send_letter);
   }
 }
 

@@ -45,7 +45,7 @@ def compose(request):
             recipients.append(user)
         except User.DoesNotExist:
             return JsonResponse({
-                "error": f"User with email {email} does not exist."
+                "error": f"Користувача зі скринькою {email} не зареєстровано в системі."
             }, status=400)
 
     # Get contents of email
@@ -70,7 +70,7 @@ def compose(request):
             email.recipients.add(recipient)
         email.save()
 
-    return JsonResponse({"message": "Email sent successfully."}, status=201)
+    return JsonResponse({"message": "Лист надіслано успішно."}, status=201)
 
 
 @login_required
